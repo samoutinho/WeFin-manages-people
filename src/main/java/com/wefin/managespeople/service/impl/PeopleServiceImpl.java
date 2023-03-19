@@ -5,10 +5,15 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.stereotype.Service;
+
 import com.wefin.managespeople.model.People;
 import com.wefin.managespeople.repository.PeopleRepository;
 import com.wefin.managespeople.service.PeopleService;
 
+import lombok.AllArgsConstructor;
+@Service
+@AllArgsConstructor
 public class PeopleServiceImpl implements PeopleService {
 
     private final PeopleRepository peopleRepository;
@@ -18,11 +23,6 @@ public class PeopleServiceImpl implements PeopleService {
 
     private static final String CPF_STR = "CPF";
     private static final String CNPJ_STR = "CNPJ";
-
-    public PeopleServiceImpl(PeopleRepository peopleRepository) {
-        super();
-        this.peopleRepository = peopleRepository;
-    }
 
     @Override
     public List<People> list() {
