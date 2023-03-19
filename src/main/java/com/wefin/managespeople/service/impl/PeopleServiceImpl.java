@@ -23,6 +23,7 @@ public class PeopleServiceImpl implements PeopleService {
 
     private static final String CPF_STR = "CPF";
     private static final String CNPJ_STR = "CNPJ";
+    private static final String ERROR_NOT_FOUND = "People with id [%d] was not found!";
 
     @Override
     public List<People> list() {
@@ -40,7 +41,7 @@ public class PeopleServiceImpl implements PeopleService {
     public People update(Long id, People peopleRequest) {
         People people = peopleRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(
-                        String.format("People with id [%d] was not found!", id)));
+                        String.format(ERROR_NOT_FOUND, id)));
 
         people.setIdentifierType(this.getIdentifierType(peopleRequest.getIdentifier()));
         people.setName(peopleRequest.getName());
@@ -62,7 +63,7 @@ public class PeopleServiceImpl implements PeopleService {
     public void delete(Long id) {
         People post = peopleRepository.findById(id)
                 .orElseThrow(
-                        () -> new EntityNotFoundException(String.format("People with id [%d] was not found!", id)));
+                        () -> new EntityNotFoundException(String.format(ERROR_NOT_FOUND, id)));
 
         peopleRepository.delete(post);
     }
@@ -73,7 +74,7 @@ public class PeopleServiceImpl implements PeopleService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new EntityNotFoundException(String.format("People with id [%d] was not found!", id));
+            throw new EntityNotFoundException(String.format(ERROR_NOT_FOUND, id));
         }
     }
 
