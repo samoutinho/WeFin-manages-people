@@ -9,7 +9,10 @@ import org.springframework.context.annotation.Bean;
 import com.wefin.managespeople.model.People;
 import com.wefin.managespeople.repository.PeopleRepository;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
+@EnableSwagger2
 public class ManagesPeopleApplication {
 
 	@Bean
