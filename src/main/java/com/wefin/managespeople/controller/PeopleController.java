@@ -52,7 +52,7 @@ public class PeopleController {
 
 		People people = peopleService.create(peopleRequest);
 
-		return new ResponseEntity<PeopleDTO>(modelMapper.map(people, PeopleDTO.class), HttpStatus.CREATED);
+		return new ResponseEntity<>(modelMapper.map(people, PeopleDTO.class), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/v1/{id}")
