@@ -10,9 +10,9 @@ public interface PeopleService {
 
     People create(People people);
 
-    People update(long id, People people);
+    People update(Long id, People people);
 
-    void delete(long id);
+    void delete(Long id);
 
-    People getById(long id);
+    People getById(Long id);
 }
